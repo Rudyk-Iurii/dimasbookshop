@@ -1,0 +1,12 @@
+{% extends "wrapper.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1 class="text-info"> Contact us </h1>
+
+    <form method="POST" action="">{% csrf_token %}<br>
+        <div class="col-sm-6 offset-sm-3">{{ form|crispy }}</div>
+        <input class="btn btn-outline-info" type="submit" value="Send Email">
+    </form><br>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "wrapper.html" %}
+{% block content %}
+    <div class="row">
+
+        <div class="col-sm-6 offset-3 text-warning bg-dark" >
+            <div class="text-monospace" style="font-size: x-large; color: greenyellow">{{ book.title }}</div><br>
+            <div class="text-info text-monospace">Автор: </div>{{ book.author }}<br>
+            {% if book.series %}
+                <div class="text-info text-monospace">Серия: </div>{{ book.series }}<br>
+            {% endif %}
+            {% if book.add_info %}
+                <div class="text-info text-monospace">Дополнительная информация:</div>{{ book.add_info|linebreaks }}
+            {% endif %}
+            <div class="text-info text-monospace" >Состояние:</div> {{ book.condition }}<br>
+            <div class="text-info text-monospace">Цена<a style="color: red">{% if book.promotion %}
+                <sup>Promo</sup>
+            {% endif %}</a>: </div>
+            <div class="text-danger" style="font-size: x-large">{{ book.price }} грн {% if book.reserved %}
+                <a class="text-white">!НАЛИЧИЕ УТОЧНЯЙТЕ!</a>
+            {% endif %}</div>
+
+            <a class="btn btn-lg btn-outline-success col-md-3" href="/contact_form" style="margin-bottom: 3px">Купить</a>
+            {%  if request.user.is_staff or request.user.is_superuser %}
+                <a class="btn btn-outline-info col-md-3" href="/book/{{ book.id }}/edit" >Изменить</a>
+                <a class="btn btn-outline-danger col-md-3" href="/book/{{ book.id }}/delete">Удалить</a>
+            {% endif %}
+        <br><br>
+        <div class="other_author" style="margin-bottom: 10px">
+        Книги автора {{ book.author }}:
+        {% for books in same_author %}
+            <br><a class="btn btn-outline-info" href="{{ books.get_absolute_url }}">{{ books.title }}</a>
+        {% endfor %}
+        </div>
+</div>
+
+    </div>
+{% endblock %}

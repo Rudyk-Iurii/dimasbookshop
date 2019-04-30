@@ -1,0 +1,12 @@
+{% extends "wrapper.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+    <form class="col-sm-6 offset-sm-3" method="POST" action="">{% csrf_token %}{{ form|crispy }}
+        <input class="btn btn-success" type="submit" value="Save book">
+    </form>
+
+    <h1 style="color: orange">{{ result }}</h1>
+{% endblock %}

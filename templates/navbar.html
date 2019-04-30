@@ -1,0 +1,39 @@
+<div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="{% url "home" %}">Dima's BookShop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+{#                <li class="nav-item active">#}
+{#                    <a class="nav-link" href="{% url "home" %}">Home <span class="sr-only">(current)</span></a>#}
+{#                </li>#}
+            <li class="nav-item active">
+                    <a class="nav-link" href="{% url "payment_method" %}">Способы оплаты<span class="sr-only">(current)</span></a>
+                </li>
+                {%  if request.user.is_staff or request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add">Add book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+           <A href="/contact_form" class="btn btn-outline-info text-info ">НАПИШИ МНЕ!</A>
+        </div>
+        {##}
+    </nav>
+</div>
+{#<main role="main" class="container">#}
+{#  <div class="jumbotron">#}
+{#    <h1>Navbar example</h1>#}
+{#    <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>#}
+{#    <a class="btn btn-lg btn-primary" href="/docs/4.3/components/navbar/" role="button">View navbar docs &raquo;</a>#}
+{#  </div>#}
+{#</main>#}
+{#<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>#}
+{#      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>#}
+{#</html>#}

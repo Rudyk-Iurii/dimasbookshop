@@ -1,0 +1,34 @@
+{% extends "wrapper.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Dimas Bookshop</h1>
+
+        <form method="GET" action="">
+        <input class="rounded-sm" type="text" name="q" placeholder="Название книги или автор" value="{{ request.GET.q }}">
+        <input class="btn btn-outline-warning btn-success" type="submit" value="Поиск книги">
+        <div class="text-dark">*С учетом регистра</div>
+    </form><br>
+<div class="row">
+
+    {% for book in instance %}
+    <a href="book/{{ book.id }}" style="min-height: 200px"  class="col-sm-3 btn btn-warning btn-outline-info border-white" >
+        <div><h2 class="text-monospace text-dark">{{ book.title }}<br></h2>
+            <strong>{{ book.author }}</strong></div><br>
+
+        {#                    <strong>Состояние-</strong> {{ book.condition }}<br>#}
+        {#                    {% if book.add_info %}#}
+{#        <strong>Серия-</strong> {{ book.series }}#}
+{#        {% endif %}<br>#}
+        {#                    {% if book.add_info %}#}
+        {#                        <strong>Дополнительная информация:</strong><br> {{ book.add_info|linebreaks }}#}
+        {#                    {% endif %}<br></div>#}
+        <div class="text" style="font-size: 20px;color: red; margin-bottom: 3px; position: absolute; bottom: 5px; right: 5px; width: 100%">
+            <strong>{{ book.price }}</strong> грн{% if book.promotion %}
+        <sup>Promo</sup>
+        {% endif %}</div>
+    </a>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
